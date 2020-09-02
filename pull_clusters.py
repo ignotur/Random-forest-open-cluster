@@ -1,5 +1,6 @@
 import random
-import sys 
+import sys
+import os
 import numpy as np
 from astroquery.vizier import Vizier
 from math import *
@@ -23,6 +24,12 @@ print (len(catalogs))
 
 cluster_name = []
 tr_matrix = []
+
+#create dir for examples
+if not os.path.exists('examples'):
+    os.makedirs('examples')
+if not os.path.exists('neg_examples'):
+    os.makedirs('neg_examples')
 
 
 t = 0
@@ -95,7 +102,9 @@ np.save ('matrix_real', tr_matrix)
 
 false_mtr = []
 
-for i in range (0,100):
+print('Number of positive samples: ', len(tr_matrix))
+
+for i in range (0,len(tr_matrix)):
 
 	n = int(random.uniform (30, 500)) ## number of stars
 
@@ -103,6 +112,13 @@ for i in range (0,100):
 	cl = np.random.uniform (0, 5, size = n)
 
 	H, xedges, yedges = np.histogram2d (cl, gm, bins=20, density=True)
+
+	if i <= 10:
+		plt.imshow(H, interpolation='nearest')
+		plt.savefig (f'neg_examples/{i}.jpg')
+		plt.cla()
+		plt.clf()
+		plt.close()
 
 	H1 = H.reshape ((400))
 
