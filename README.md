@@ -38,3 +38,57 @@ If the gravitational connection is lost, but the stars still move in the same di
 shows us the age of the cluster (which also indicates the type of cluster: open, globular, etc.) using the characteristic deviation from the main sequence (MS) and the initial main sequence.
 
 <img crossorigin="anonymous" src="https://upload.wikimedia.org/wikipedia/commons/2/27/Open_cluster_HR_diagram_ages.gif" class="gif" alt="" style="">
+
+# Gaia
+
+Global Astrometric Interferometer for Astrophysics are made by ESA (European Space Agency)
+
+Space telescope have worked in the optical wavelength range.
+The main goal is to create a 3D map of the distribution of stars in our Milky Way Galaxy.
+
+<img crossorigin="anonymous" src="https://upload.wikimedia.org/wikipedia/en/f/f7/Gaia_insignia.png" class="png" alt="Gaia mission insignia">
+
+## GAIA DATA RELEASE 2 (GAIA DR2)
+
+[Description](https://www.cosmos.esa.int/web/gaia/dr2)
+
+## Dataset used for first iteration of this project
+
+(reference file: load_data.ipynb)
+
+From catalog: A+A/618/A93[1]
+
+We filter stars for which Gaia didn't measure magnitude or colour
+
+# Evaluation metrics
+We use RandomForestClassifier in sklearn
+
+1. For parameters max_depth=2, random_state=0 
+
+Accuracy score on test set:
+
+0.9382113821138212
+
+Confusion matrix:
+[[265  38]
+ [  0 312]]
+ 
+
+2. For parameters max_depth=20, random_state=0 
+
+Accuracy score on test set:
+0.9951219512195122
+
+Confusion matrix:
+[[300   3]
+ [  0 312]]
+
+
+# Next steps
+
+1. Cross validation and optimisation of the hyperparameters of the random forest. 
+2. Get additional evaluation metrics (accuracy score, precision, recall, F1-score, etc.) on training and test sets, and decide on the meaningful ones to optimize for.
+
+# References
+1. A Gaia DR2 view of the Open Cluster population in the Milky Way
+https://arxiv.org/abs/1805.08726
