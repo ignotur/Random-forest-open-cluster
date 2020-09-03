@@ -51,3 +51,44 @@ The main goal is to create a 3D map of the distribution of stars in our Milky Wa
 ## GAIA DATA RELEASE 2 (GAIA DR2)
 
 [Description](https://www.cosmos.esa.int/web/gaia/dr2)
+
+## Dataset used for first iteration of this project
+
+(reference file: load_data.ipynb)
+
+From catalog: A+A/618/A93[1]
+
+We filter stars for which Gaia didn't measure magnitude or colour
+
+# Evaluation metrics
+We use RandomForestClassifier in sklearn
+
+1. For parameters max_depth=2, random_state=0 
+
+Accuracy score on test set:
+
+0.9382113821138212
+
+Confusion matrix:
+[[265  38]
+ [  0 312]]
+ 
+
+2. For parameters max_depth=20, random_state=0 
+
+Accuracy score on test set:
+0.9951219512195122
+
+Confusion matrix:
+[[300   3]
+ [  0 312]]
+
+
+# Next steps
+
+1. Cross validation and optimisation of the hyperparameters of the random forest. 
+2. Get additional evaluation metrics (accuracy score, precision, recall, F1-score, etc.) on training and test sets, and decide on the meaningful ones to optimize for.
+
+# References
+1. A Gaia DR2 view of the Open Cluster population in the Milky Way
+https://arxiv.org/abs/1805.08726
