@@ -38,3 +38,16 @@ If the gravitational connection is lost, but the stars still move in the same di
 shows us the age of the cluster (which also indicates the type of cluster: open, globular, etc.) using the characteristic deviation from the main sequence (MS) and the initial main sequence.
 
 <img crossorigin="anonymous" src="https://upload.wikimedia.org/wikipedia/commons/2/27/Open_cluster_HR_diagram_ages.gif" class="gif" alt="" style="">
+
+# Gaia
+
+Global Astrometric Interferometer for Astrophysics are made by ESA (European Space Agency)
+
+Space telescope have worked in the optical wavelength range.
+The main goal is to create a 3D map of the distribution of stars in our Milky Way Galaxy.
+
+<img crossorigin="anonymous" src="https://upload.wikimedia.org/wikipedia/en/f/f7/Gaia_insignia.png" class="png" alt="Gaia mission insignia">
+
+## GAIA DATA RELEASE 2 (GAIA DR2)
+
+[Description](https://www.cosmos.esa.int/web/gaia/dr2)
