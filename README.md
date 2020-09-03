@@ -29,7 +29,7 @@ After the collapse and fragmentation of a giant molecular cloud, young stars app
 
 ### 4) Gravitationally bound group of stars:
 
-The stars in open clusters are connected by gravity and move together in space, located about the same distance from the observer. (This means that the parallax <img src="https://latex.codecogs.com/gif.latex?\pi" title="\pi" /> and proper motion $\mu$ of stars within open clusters must be similar.)
+The stars in open clusters are connected by gravity and move together in space, located about the same distance from the observer. (This means that the parallax <img src="https://latex.codecogs.com/gif.latex?\pi" title="\pi" /> and proper motion <img src="https://latex.codecogs.com/gif.latex?\mu" title="\mu" /> of stars within open clusters must be similar.)
 
 If the gravitational connection is lost, but the stars still move in the same direction at similar speeds, then this group of stars is called the stellar association.
 
