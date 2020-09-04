@@ -1,9 +1,9 @@
 '''
 --------------------------------------------------------------------------------
-Simple script to create fake cluster from isochrones.
+Simple script to create fake clusters from isochrones.
 Run as:
 >> python fake_cluster.py <n>
-where 'n' is the total number of stars desired in the fake cluster.
+where 'n' is the total number of desired fake clusters.
 --------------------------------------------------------------------------------
 '''
 
@@ -58,29 +58,37 @@ def plotHessDiagram(fake_cluster_df):
     fig.savefig(outfile, dpi=300)
     plt.show()
 
+def make_fake_cluster(id):
+    # no. of stars in the fake cluster
+    n = np.random.randint(30, high=500)
+
+    # load isochrone
+    isochrone = np.loadtxt("isochrone.dat", comments="#")
+
+    # shuffle and select n stars
+    temp_list = np.arange( isochrone.shape[0] )
+    np.random.shuffle( temp_list )
+    subsetIdx = temp_list[ :n ]
+    subsetIdx = np.array( subsetIdx )
+
+    fake_cluster = np.column_stack((isochrone[subsetIdx, -3:], np.repeat(id, n)))
+
+    return fake_cluster
 
 if __name__=='__main__':
     # no. of stars that you want in your cluster
-    n = int(sys.argv[1])
+    n_fake_cluster = int(sys.argv[1])
+
+    fake_clusters = []
+    for id in range(n_fake_cluster):
+        fake_clusters.append( make_fake_cluster(id) )
+
+    # col_names = ['G', 'Bp', 'Rp', 'cluster_id']
+    arr_fake_clusters = np.concatenate([c for c in fake_clusters])
+    np.save("fake_clusters_new.npy", arr_fake_clusters)
+
 
     # cols = ['Zini', 'MH', 'logAge', 'Mini', 'int_IMF', 'Mass', 'logL',  'logTe',\
     #         'logg', 'label', 'McoreTP', 'C_O',  'period0', 'period1', 'pmode', 'Mloss',\
     #         'tau1m',  'X', 'Y', 'Xc', 'Xn', 'Xo', 'Cexcess', 'Z', 'mbolmag',\
     #         'Gmag', 'G_BPmag', 'G_RPmag']
-
-    isochrone = np.loadtxt("isochrone.dat", comments="#")
-
-    temp_list = np.arange( isochrone.shape[0] )
-    np.random.shuffle( temp_list )			 #shuffles the elements of temp_list randomly
-    subsetIdx = temp_list[ :n ]
-    subsetIdx = np.array( subsetIdx )
-
-    fake_cluster = isochrone[subsetIdx, -3:]
-    col_names = ['G', 'Bp', 'Rp']
-
-    # save the fake cluster in pandas dataframe
-    fake_cluster_df = pd.DataFrame( fake_cluster, columns=col_names )
-    outfile = "fake_cluster.csv"
-    fake_cluster_df.to_csv( outfile )
-
-    plotHessDiagram(fake_cluster_df)
