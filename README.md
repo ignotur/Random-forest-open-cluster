@@ -14,7 +14,8 @@ In this repository we train random forest and convolutional neural network to di
 3. [Dataset for first iteration](#dataset-used-for-first-iteration-of-this-project)
 4. [Evaluation metrics](#evaluation-metrics)
 5. [Next steps](#next-steps)
-6. [References](#references)
+6. [Files description](#files-description)
+7. [References](#references)
     
 # Open clusters:
 group of stars (up to several thousand) formed from a single molecular cloud and having approximately the same age.
@@ -105,6 +106,18 @@ Confusion matrix:
 
 1. Cross validation and optimisation of the hyperparameters of the random forest. 
 2. Get additional evaluation metrics (accuracy score, precision, recall, F1-score, etc.) on training and test sets, and decide on the meaningful ones to optimize for.
+
+# Files description
+* data - contains: npy files with data and examples of plots either true or non clusters
+* example notebooks - contains: jupyter notebooks
+* methods script - contains: scripts of our method
+You can start from here:
+example_notebooks/pull_clusters.ipynb - requests information about cluster membership from catalogue and bin Herzprung-Russell
+diagram into 400 2D bins (20 bins for color and 20 bins for G magnitude),
+example_notebooks/random_forest.ipynb - reads data and trains a Random Forest
+example_notebooks/cnn.ipynb - reads data and trains a Convolutional neural network
+
+
 
 # References
 [1.](https://arxiv.org/abs/1805.08726) A Gaia DR2 view of the Open Cluster population in the Milky Way
