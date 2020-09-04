@@ -4,6 +4,14 @@
 
 Code to verify if a collection of stars found in the Gaia database is an open cluster.
 
+# Table of contents:
+1. [Open clusters](#open-clusters)
+2. [Gaia](#gaia)
+3. [Dataset for first iteration](#dataset-used-for-first-iteration-of-this-project)
+4. [Evaluation metrics](#evaluation-metrics)
+5. [Next steps](#next-steps)
+6. [References](#references)
+    
 # Open clusters:
 group of stars (up to several thousand) formed from a single molecular cloud and having approximately the same age.
 
@@ -54,9 +62,9 @@ The main goal is to create a 3D map of the distribution of stars in our Milky Wa
 
 ## Dataset used for first iteration of this project
 
-(reference file: load_data.ipynb)
+(reference file: [load_data.ipynb](https://github.com/ignotur/Random-forest-open-cluster/blob/master/load_data.ipynb))
 
-From catalog: A+A/618/A93[1]
+From catalog: [A+A/618/A93](https://vizier.u-strasbg.fr/viz-bin/VizieR-3?-source=+J%2FA%2BA%2F618%2FA93%2Fmembers&-from=nav&-nav=cat%3AJ%2FA%2BA%2F618%2FA93%26tab%3A%7BJ%2FA%2BA%2F618%2FA93%2Fmembers%7D%26key%3Asource%3DJ%2FA%2BA%2F618%2FA93%2Fmembers%26HTTPPRM%3A%26-out.max%3D1000%26-out.form%3DHTML+Table%26-oc.form%3Dsexa%26#adapt)[1](https://arxiv.org/abs/1805.08726)
 
 We filter stars for which Gaia didn't measure magnitude or colour
 
@@ -90,5 +98,4 @@ Confusion matrix:
 2. Get additional evaluation metrics (accuracy score, precision, recall, F1-score, etc.) on training and test sets, and decide on the meaningful ones to optimize for.
 
 # References
-1. A Gaia DR2 view of the Open Cluster population in the Milky Way
-https://arxiv.org/abs/1805.08726
+[1.](https://arxiv.org/abs/1805.08726) A Gaia DR2 view of the Open Cluster population in the Milky Way
