@@ -66,10 +66,7 @@ def make_non_cluster(id):
     isochrone = np.loadtxt("data/isochrone.dat", comments="#")
 
     # shuffle and select n stars
-    temp_list = np.arange( isochrone.shape[0] )
-    np.random.shuffle( temp_list )
-    subsetIdx = temp_list[ :n ]
-    subsetIdx = np.array( subsetIdx )
+    subsetIdx = np.random.choice(isochrone.shape[0], n, replace=False)
 
     non_cluster = np.column_stack((isochrone[subsetIdx, -3:], np.repeat(id, n)))
 
