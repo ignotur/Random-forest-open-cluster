@@ -1,9 +1,9 @@
 '''
 --------------------------------------------------------------------------------
-Simple script to create fake clusters from isochrones.
+Simple script to create non-clusters from isochrones.
 Run as:
->> python fake_cluster.py <n>
-where 'n' is the total number of desired fake clusters.
+>> python create_non_clusters_isochrones.py <n>
+where 'n' is the total number of desired non-clusters.
 --------------------------------------------------------------------------------
 '''
 
@@ -36,11 +36,11 @@ def hess( col, mag ):
 
     return hh, xyrange
 
-def plotHessDiagram(fake_cluster_df):
+def plotHessDiagram(non_cluster_df):
 	# xlim, ylim = [-0.5, 2], [4, -5]
-    g = fake_cluster_df['G']
-    b_p = fake_cluster_df['Bp']
-    r_p = fake_cluster_df['Rp']
+    g = non_cluster_df['G']
+    b_p = non_cluster_df['Bp']
+    r_p = non_cluster_df['Rp']
 
     # plotting
     fig = plt.figure(figsize=(5, 5))
@@ -54,12 +54,12 @@ def plotHessDiagram(fake_cluster_df):
     ax.set_xlabel('$B_{p} - R_{p}$')
     ax.set_ylabel('G')
     ax.invert_yaxis()
-    outfile = "fake_cluster.png"
+    outfile = "non_cluster.png"
     fig.savefig(outfile, dpi=300)
     plt.show()
 
-def make_fake_cluster(id):
-    # no. of stars in the fake cluster
+def make_non_cluster(id):
+    # no. of stars in the non-cluster
     n = np.random.randint(30, high=500)
 
     # load isochrone
@@ -71,21 +71,21 @@ def make_fake_cluster(id):
     subsetIdx = temp_list[ :n ]
     subsetIdx = np.array( subsetIdx )
 
-    fake_cluster = np.column_stack((isochrone[subsetIdx, -3:], np.repeat(id, n)))
+    non_cluster = np.column_stack((isochrone[subsetIdx, -3:], np.repeat(id, n)))
 
-    return fake_cluster
+    return non_cluster
 
 if __name__=='__main__':
     # no. of stars that you want in your cluster
-    n_fake_cluster = int(sys.argv[1])
+    n_non_cluster = int(sys.argv[1])
 
-    fake_clusters = []
-    for id in range(n_fake_cluster):
-        fake_clusters.append( make_fake_cluster(id) )
+    non_clusters = []
+    for id in range(n_non_cluster):
+        non_clusters.append( make_non_cluster(id) )
 
     # col_names = ['G', 'Bp', 'Rp', 'cluster_id']
-    arr_fake_clusters = np.concatenate([c for c in fake_clusters])
-    np.save("fake_clusters_new.npy", arr_fake_clusters)
+    arr_non_clusters = np.concatenate([c for c in non_clusters])
+    np.save("data/non_clusters_isochrones.npy", arr_non_clusters)
 
 
     # cols = ['Zini', 'MH', 'logAge', 'Mini', 'int_IMF', 'Mass', 'logL',  'logTe',\
