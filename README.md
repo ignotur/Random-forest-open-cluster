@@ -1,8 +1,12 @@
-# Random-forest-open-cluster
+# Machine learning applied to open cluster identification
 
 [![Made at #AstroHackWeek](https://img.shields.io/badge/Made%20at-%23AstroHackWeek-8063d5.svg?style=flat)](http://astrohackweek.org/)
 
 Code to verify if a collection of stars found in the Gaia database is an open cluster.
+Clustering algorithms (e.g. DBSCAN) returns tens of cluster candidates for every few square degrees of the sky area when they are applied to the Gaia DR2 database data.
+In reality some of these cluster candidates are not open clusters but rather are fluctuations of the Galactic disk stellar population.
+These collections of stars are expected to have very different ages, absorptions and metallicities. 
+In this repository we train random forest and convolutional neural network to distiungush between actual open cluster and general Galactic disk population. 
 
 # Table of contents:
 1. [Open clusters](#open-clusters)
@@ -21,11 +25,15 @@ You may have seen such open clusters in the sky in the constellation Taurus... I
 
 <img crossorigin="anonymous" src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Pleiades_large.jpg/800px-Pleiades_large.jpg" class="jpg" alt="Pleiades large.jpg" width="348" height="251" style="">
 
+Another types of clusters which can potentially be found in the Sky are globular clusters and young stellar clusters. Globular clusters contain from hundred thousands to a few millions of stars. There are approximately 150 globular clusters in our Galaxy and all of them are known. Young stellar clusters are objects typically embedded in gas and dust and cannot be seen in the Gaia data.
+
 ## Typical features of open clusters:
 
 ### 1) Similar chemical composition 
 
-In articles on astronomy, you can see the terms "abundance" and "metallicity". The first term is usually used to define the amount of a chemical element in relation to the amount of such an element in the Sun, but can be defined differently. The second term usually refers to the ratio of the abundance of Fe in a star (object) to the abundance of Fe in the Sun, but can be defined differently.
+In articles on astronomy, you can see the terms "abundance" and "metallicity". The first term is usually used to define the amount of a chemical element in relation to the amount of such an element in the Sun, but can be defined differently. The second term usually refers to the ratio of the abundance of Fe in a star (object) to the abundance of Fe in the Sun, but can be defined differently. 
+
+Stars in the open clusters are born from the same gas cloud in a single episode of star formation, so they all are expected to have the same metallicity.
 
 ### 2) Located either in the galactic disk or near it:
 
@@ -40,10 +48,11 @@ After the collapse and fragmentation of a giant molecular cloud, young stars app
 The stars in open clusters are connected by gravity and move together in space, located about the same distance from the observer. (This means that the parallax <img src="https://latex.codecogs.com/gif.latex?\pi" title="\pi" /> and proper motion <img src="https://latex.codecogs.com/gif.latex?\mu" title="\mu" /> of stars within open clusters must be similar.)
 
 If the gravitational connection is lost, but the stars still move in the same direction at similar speeds, then this group of stars is called the stellar association.
+Cluster could get gravitationally unbound when the gas and dust component is lost, also massive stars explodes as supernova. The cluster could lose stars due to the tidal forces from the Galactic disk.
 
 ### Hertzsprung–Russell diagram
 
-shows us the age of the cluster (which also indicates the type of cluster: open, globular, etc.) using the characteristic deviation from the main sequence (MS) and the initial main sequence.
+is a powerful diagnostical tool in the stellar astronomy. The absolute magnitude of a star (y-axis) is an indications of the star size and mass (surface gravity) while the stellar colour (x-axis) shows stellar temperature. Stars spends most of their lives at the core nuclear burning stage where exists a unique relation between stellar mass and its temperature. This relation can be seen as the nearly stright line in the Hertzsprung–Russell diagram and is called the main sequence. Stars at the top of main sequence burn the nuclear fuel much faster than stars at the bottom of the main sequence. Therefore if stellar population was born at the same time the main sequence starts to disappear from the top. The Hertzsprung–Russell diagram shows us the age of the cluster (which also indicates the type of cluster: open, globular, etc.) using the characteristic deviation from the main sequence (MS) and the initial main sequence.
 
 <img crossorigin="anonymous" src="https://upload.wikimedia.org/wikipedia/commons/2/27/Open_cluster_HR_diagram_ages.gif" class="gif" alt="" style="">
 
@@ -52,7 +61,7 @@ shows us the age of the cluster (which also indicates the type of cluster: open,
 Global Astrometric Interferometer for Astrophysics are made by ESA (European Space Agency)
 
 Space telescope have worked in the optical wavelength range.
-The main goal is to create a 3D map of the distribution of stars in our Milky Way Galaxy.
+The main goal is to create a 3D map of the stars in our Milky Way Galaxy. The Gaia provides 5 element astrometry solution (parallax, proper motion and stellar coordianates) as well as the photometric measurements for stars.
 
 <img crossorigin="anonymous" src="https://upload.wikimedia.org/wikipedia/en/f/f7/Gaia_insignia.png" class="png" alt="Gaia mission insignia">
 
