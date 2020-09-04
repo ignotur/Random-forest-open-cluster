@@ -63,7 +63,7 @@ def make_non_cluster(id):
     n = np.random.randint(30, high=500)
 
     # load isochrone
-    isochrone = np.loadtxt("isochrone.dat", comments="#")
+    isochrone = np.loadtxt("data/isochrone.dat", comments="#")
 
     # shuffle and select n stars
     temp_list = np.arange( isochrone.shape[0] )
