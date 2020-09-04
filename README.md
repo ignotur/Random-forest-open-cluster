@@ -114,7 +114,7 @@ Confusion matrix:
 
 You can start from here:
 * example_notebooks/pull_clusters.ipynb - requests information about cluster membership from catalogue and bin Herzprung-Russell	
-diagram into 400 2D bins (20 bins for color and 20 bins for G magnitude),	
+diagram into 400 2D bins (20 bins for color and 20 bins for G magnitude)
 * example_notebooks/random_forest.ipynb - reads data and trains a Random Forest	
 * example_notebooks/cnn.ipynb - reads data and trains a Convolutional neural network
 
